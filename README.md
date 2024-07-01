@@ -6,13 +6,13 @@ Live demo: https://www.youtube.com/watch?v=nwlottSG9EU
 
 ## Screenshots
 
-|         User List          |           Add User            |
-| :------------------------: | :---------------------------: |
-| ![](assets/img/users.jpeg) | ![](assets/img/add_user.jpeg) |
+|         User List         |           Add User           |
+| :-----------------------: | :--------------------------: |
+| ![](assets/img/users.png) | ![](assets/img/add_user.png) |
 
-|           Edit User            |           Detail User            |
-| :----------------------------: | :------------------------------: |
-| ![](assets/img/edit_user.jpeg) | ![](assets/img/detail_user.jpeg) |
+|           Edit User           |           Detail User           |
+| :---------------------------: | :-----------------------------: |
+| ![](assets/img/edit_user.png) | ![](assets/img/detail_user.png) |
 
 ## Features
 
@@ -37,8 +37,8 @@ Follow these instructions to set up and run the project on your local machine.
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/flutter-user-management.git
-   cd flutter-user-management
+   git clone https://github.com/eduuuJS/flutter_challenge_userly.git
+   cd flutter_challenge_userly
    ```
 
 2. **Install dependencies:**
@@ -58,26 +58,67 @@ Follow these instructions to set up and run the project on your local machine.
 ```plaintext
 lib/
 ├── main.dart
-├── models/
-│   └── user.dart
-├── services/
-│   └── user_service.dart
-├── controllers/
-│   └── user_controller.dart
-├── screens/
-│   ├── user_list_screen.dart
-│   ├── user_detail_screen.dart
-│   ├── add_edit_user_screen.dart
-└── widgets/
-    └── user_tile.dart
+├── app/
+│   └── data/
+│   │   ├── dtos/
+│   │   │   └── response_user_dto.dart
+│   │   └── repository/
+│   │       └── user_repository.dart
+│   └── domain/
+│   │   ├── action_type.dart
+│   │   └── user.dart
+│   └── presentation/
+│       ├── components/
+│       │   ├── icon_wrapper.dart
+│       │   ├── input_primary.dart
+│       │   └── primary_button.dart
+│       └── screens/
+│           ├── add_edit_user/
+│           ├── detail_user/
+│           ├── splash/
+│           └── users/
+└── core/
+    ├── config/
+    │   └── app_config.dart
+    ├── environment/
+    │   └── environment.dart
+    ├── network/
+    │   ├── interceptors/
+    │   │   └── logger_interceptor.dart
+    │   ├── dio_client.dart
+    │   └── dio_config.dart
+    ├── routes/
+    │   ├── app_routes.dart
+    │   └── app_views.dart
+    ├── theme/
+    │   ├── app_colors.dart
+    │   └── app_theme.dart
+    └── utils/
+       ├── dependency_injection.dart
+       ├── helpers.dart
+       └── validators.dart
+
+
 ```
 
 - `main.dart`: Entry point of the application.
-- `models/`: Contains the `User` model class.
-- `services/`: Contains the `UserService` class for making API requests.
-- `controllers/`: Contains the `UserController` class for managing state with GetX.
-- `screens/`: Contains the UI screens for listing users, viewing user details, and adding/editing users.
-- `widgets/`: Contains reusable UI components.
+- `app/`: Contains the features of the application.
+- `app/data/`: It is the data exchange layer with any external service.
+- `app/data/dtos/`: Contains the data transfer objects (DTO) used for data exchange.
+- `app/data/repository/`: Contains the repository classes for data access.
+- `app/domain/`: Contains the domain layer of the application.
+- `app/domain/action_type.dart`: Contains the action types used in the application.
+- `app/domain/user.dart`: Contains the user domain model.
+- `app/presentation/`: Contains the presentation layer of the application.
+- `app/presentation/components/`: Contains the reusable components of the application.
+- `app/presentation/screens/`: Contains the screens of the application. Each screen contains its respective GetxController to manage its state and its Binding to inject the controller.
+- `core/`: Contains environment settings, http client settings, etc.
+- `core/config/`: Contains the configuration of the application execution environment.
+- `core/environment/`: Contains the runtime environments available for the application.
+- `core/network/`: Contains the configuration of the http client (Dio) and its respective interceptors (Logger).
+- `core/routes/`: Contains the routes of the application.
+- `core/theme/`: Contains the application theme.
+- `core/utils/`: Contains the utilities for the application.
 
 ## API Endpoints
 
